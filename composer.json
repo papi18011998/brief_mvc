@@ -12,5 +12,6 @@
             "email": "papapibrahima98@gmail.com"
         }
     ],
-    "require": {}
+    "require-dev": {
+    }
 }

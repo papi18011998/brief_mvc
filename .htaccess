@@ -4,3 +4,4 @@ RewriteRule ^connexion$ src/views/connexion.php
 RewriteRule ^connexion_controls$ src/controllers/connexionController.php
 RewriteRule ^style$ src/public/style.css
 RewriteRule ^autoload$ vendor/autoload.php
+RewriteRule ^liste$ src/views/liste.php
