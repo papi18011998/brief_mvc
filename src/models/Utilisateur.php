@@ -1,6 +1,8 @@
 <?php
 
 namespace Brief\models;
+require '../utils/Helper.php';
+use Brief\utils\Helper;
 
 class Utilisateur
 {
@@ -106,5 +108,12 @@ class Utilisateur
     {
         $this->telephone = $telephone;
     }
-
+    public function login($login,$password){
+            $helper = Helper::get_connexion();
+            $statement = "SELECT * FROM `utilisateurs`
+                          WHERE `login` =? AND password =?";
+            $request = $helper->prepare($statement);
+            $request->execute([$login,$password]);
+            return $request->fetch();
+    }
 }

@@ -1,2 +1,2 @@
 <?php
-    echo"CICES";
+    require 'src/views/header.php';
