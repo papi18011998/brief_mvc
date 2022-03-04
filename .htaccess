@@ -1,5 +1,6 @@
 RewriteEngine On
 
+RewriteRule ^accueil$ index.php
 RewriteRule ^connexion$ src/views/connexion.php
 RewriteRule ^connexion_controls$ src/controllers/connexionController.php
 RewriteRule ^style$ src/public/style.css

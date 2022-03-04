@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!Doctype html>
 <html lang="fr">
 <head>
@@ -11,6 +14,16 @@
     <div class="container">
 	<div class="screen">
 		<div class="screen__content">
+            <div>
+                <?php
+                    if (array_key_exists('erreur',$_SESSION)){
+                        echo "<div class='alert alert-danger'>";
+                            print_r(implode('<br/>',$_SESSION['erreur']));
+                        echo "</div>";
+                        unset($_SESSION['erreur']);
+                    }
+                ?>
+            </div>
 			<form class="login" method="post" action="connexion_controls">
 				<div class="login__field">
 					<i class="login__icon fas fa-user"></i>
