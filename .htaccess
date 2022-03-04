@@ -1,11 +1,13 @@
 RewriteEngine On
-
+#Home page
 RewriteRule ^accueil$ index.php
+#login routes
 RewriteRule ^connexion$ src/views/connexion.php
-#RewriteRule ^connexion_controls$ src/controllers/utilisateurController.php
+RewriteRule ^utilisateurs/connexion$ src/controllers/utilisateurController.php?get_connexion
+# Etreprise routes
+RewriteRule ^entrerises/liste$ src/views/entreprises/liste.php
+#utils routes
 RewriteRule ^style$ src/public/style.css
 RewriteRule ^script$ src/public/script.js
 RewriteRule ^header$ src/public/header.css
-RewriteRule ^entreprises/liste$ src/views/liste.php
 RewriteRule ^logo$ src/public/logo.jpg
-RewriteRule ^utilisateurs/connexion$ src/controllers/utilisateurController.php?get_connexion

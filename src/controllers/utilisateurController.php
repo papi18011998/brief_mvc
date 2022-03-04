@@ -2,10 +2,11 @@
 session_start();
 require '../models/Utilisateur.php';
 use Brief\models\Utilisateur;
-function getConnexion(){
-    echo"Je me pointe";
-}
+
 if (isset($_GET['get_connexion'])) {
+   get_connexion();
+}
+function get_connexion(){
     if (isset($_POST['submit'])) {
         $erreur = [];
         if (strlen(trim($_POST['login'])) > 15 || strlen(trim($_POST['login'])) <= 3) {
@@ -19,18 +20,30 @@ if (isset($_GET['get_connexion'])) {
             header('location:../connexion');
         }
         else {
-//              papi thiare
-                $location ='';
-                $login = htmlspecialchars($_POST['login']);
-                $password = htmlspecialchars($_POST['password']);
-                $user = new Utilisateur();
-                $credential = $user->login($login, sha1($password));
-                if ($credential){
-                    $location ='';
-                }else{
-                    echo "flop";
-                }
-//                header('location:');
-       }
+//          papi thiare
+            $location ='';
+            $login = htmlspecialchars($_POST['login']);
+            $password = htmlspecialchars($_POST['password']);
+            $user = new Utilisateur();
+            $credential = $user->login($login, sha1($password));
+            if ($credential){
+                $location ='../entrerises/liste';
+                $user->setIdUtilisateur($credential['id_utilisateur']);
+                $user->setPrenomUtilisateur($credential['prenom_utilisateur']);
+                $user->setNomUtilisateur($credential['nom_utilisateur']);
+                $user->setTelephone($credential['telephone']);
+                $_SESSION['user_connected']=[
+                    'id'=>$user->getIdUtilisateur(),
+                    'prenom'=>$user->getPrenomUtilisateur(),
+                    'nom'=>$user->getNomUtilisateur(),
+                    'telephone'=>$user->getTelephone()
+                ];
+            }else{
+                $erreur['bad_credentials']='Login ou mot de passe incorrect';
+                $_SESSION['erreur'] =$erreur;
+                $location='../connexion';
+            }
+            header("location:$location");
+        }
     }
 }

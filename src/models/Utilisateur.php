@@ -110,7 +110,7 @@ class Utilisateur
     }
     public function login($login,$password){
             $helper = Helper::get_connexion();
-            $statement = "SELECT * FROM `utilisateurs`
+            $statement = "SELECT `id_utilisateur`,`prenom_utilisateur`,`nom_utilisateur`,`telephone` FROM `utilisateurs`
                           WHERE `login` =? AND password =?";
             $request = $helper->prepare($statement);
             $request->execute([$login,$password]);
