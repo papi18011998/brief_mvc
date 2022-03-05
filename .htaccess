@@ -5,9 +5,9 @@ RewriteRule ^accueil$ index.php
 RewriteRule ^connexion$ src/views/connexion.php
 RewriteRule ^utilisateurs/connexion$ src/controllers/utilisateurController.php?get_connexion
 # Etreprise routes
-RewriteRule ^entrerises/liste$ src/views/entreprises/liste.php
+RewriteRule ^entreprises/liste$ src/views/entreprises/liste.php
 #utils routes
-RewriteRule ^style$ src/public/style.css
-RewriteRule ^script$ src/public/script.js
-RewriteRule ^header$ src/public/header.css
+RewriteRule ^style$ src/views/templates/style.css
+RewriteRule ^script$ src/views/templates/script.js
+RewriteRule ^header$ src/views/templates/header.css
 RewriteRule ^logo$ src/public/logo.jpg

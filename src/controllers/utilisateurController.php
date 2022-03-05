@@ -27,7 +27,7 @@ function get_connexion(){
             $user = new Utilisateur();
             $credential = $user->login($login, sha1($password));
             if ($credential){
-                $location ='../entrerises/liste';
+                $location ='../entreprises/liste';
                 $user->setIdUtilisateur($credential['id_utilisateur']);
                 $user->setPrenomUtilisateur($credential['prenom_utilisateur']);
                 $user->setNomUtilisateur($credential['nom_utilisateur']);

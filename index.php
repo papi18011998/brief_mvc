@@ -1,2 +1,2 @@
 <?php
-    require 'src/views/header.php';
+    require 'src/views/templates/header.php';

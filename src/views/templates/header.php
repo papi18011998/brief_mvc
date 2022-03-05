@@ -1,13 +1,15 @@
+<?php //echo __FILE__;?>
 <!DOCTYPE html>
 <html lang="en" >
 <head>
     <meta charset="UTF-8">
     <title>Tableau de bord</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"><link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css'>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css'>
     <link rel="stylesheet" href="header">
-    <link rel="icon"  href="logo">
+    <link rel="icon"  href="../../public/logo.jpg">
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -20,7 +22,7 @@
         <ul class="navbar-nav ml-auto">
             <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
             <li class="nav-item">
-                <a class="nav-link" href="accueil"><i class="fas fa-home"></i>Accueil</a>
+                <a class="nav-link" href="../../../index.php"><i class="fas fa-home"></i>Accueil</a>
             </li>
             <li class="nav-item active">
                 <a class="nav-link" href="javascript:void(0);"><i class="far fa-address-book"></i>Liste des ONG</a>
@@ -35,7 +37,7 @@
                 <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Charts</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"><i class="far fa-param"></i>Connexion</a>
+                <a class="nav-link" href="../connexion.php"><i class="far fa-param"></i>Connexion</a>
             </li>
         </ul>
     </div>
@@ -44,7 +46,7 @@
 <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
 <script src='https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js'></script>
 <script src='https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js'></script>
-<script  src="script"></script>
+<script src="script"></script>
 
 </body>
 </html>
