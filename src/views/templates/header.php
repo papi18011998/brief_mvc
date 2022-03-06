@@ -37,7 +37,7 @@
                 <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Charts</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../connexion.php"><i class="far fa-param"></i>Connexion</a>
+                <a class="nav-link" href="connexion"><i class="far fa-param"></i>Connexion</a>
             </li>
         </ul>
     </div>

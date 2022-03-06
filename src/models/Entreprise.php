@@ -299,7 +299,7 @@ class Entreprise
         $helper = Helper::get_connexion();
         $statement = 'SELECT * FROM `entreprises`';
         $request = $helper->query($statement);
-        return$request->fetchAll();
+        return $request->fetchAll();
     }
     public function get_entreprise($id_entreprise){
         $helper = Helper::get_connexion();

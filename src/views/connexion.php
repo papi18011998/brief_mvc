@@ -24,7 +24,7 @@ session_start();
                     }
                 ?>
             </div>
-			<form class="login" method="post" action="utilisateurs/connexion">
+			<form class="login" method="post" action="utilisateurs/connexion ">
 				<div class="login__field">
 					<i class="login__icon fas fa-user"></i>
 					<input type="text" class="login__input" placeholder="login de l'utilisateur" name="login">
