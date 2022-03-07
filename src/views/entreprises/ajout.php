@@ -38,8 +38,11 @@ if(!isset($_SESSION['user_connected'])){
          <div class="col-sm-3 col-md-6 my-1 px-3">
             <label class="sr-only" for="id_domaine">Quel est votre domaine?</label>
             <select class="form-select" id="id_domaine" name="id_domaine" aria-label="Default select example">
-                <option value="1">Oui</option>
-                <option value="2">Non</option>
+                <?php
+                foreach ($_SESSION['domaines'] as $domaine){
+                    ?>
+                    <option value=<?=$domaine['id_domaine']?>><?=$domaine['libelle_domaine']?></option>
+                <?php }?>
             </select>
          </div> 
         </div>

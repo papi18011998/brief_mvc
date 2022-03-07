@@ -1,7 +1,6 @@
 <?php
 
 namespace Brief\models;
-require'../utils/Helper.php';
 use Brief\utils\Helper;
 
 class Repondant

@@ -4,6 +4,8 @@ use Brief\models\Repondant;
 use Brief\models\Entreprise;
 use Brief\models\Fonction;
 use Brief\models\Regime;
+use Brief\models\Domaine;
+require '../models/Domaine.php';
 require '../models/Fonction.php';
 require '../models/Regime.php';
 require '../models/Entreprise.php';
@@ -20,6 +22,8 @@ if (isset($_POST['add_organisation'])) {
 if (isset($_GET['form'])){
     $fonction = new Fonction();
     $regime = new Regime();
+    $domaine = new Domaine();
+    $_SESSION['domaines'] = $domaine->all_domaines();
     $_SESSION['regimes'] = $regime->all_regimes();
     $_SESSION['fonctions'] = $fonction->all_fonctions();
     header('location:../entreprises/ajout');
