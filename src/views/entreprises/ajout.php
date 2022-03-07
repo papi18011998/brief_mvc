@@ -58,8 +58,11 @@ if(!isset($_SESSION['user_connected'])){
          <div class="col-sm-3 col-md-6 my-1 px-3">
             <label class="sr-only" for="id_quartier">Quartier</label>
             <select class="form-select" id="id_quartier" name="id_quartier" aria-label="Default select example">
-                <option value="1">Oui</option>
-                <option value="2">Non</option>
+                <?php
+                foreach ($_SESSION['quartiers'] as $quartier){
+                    ?>
+                    <option value=<?=$quartier['id_quartier']?> > <?=$quartier['nom_quartier']?> </option>
+                <?php }?>
             </select>
          </div> 
         </div>

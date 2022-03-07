@@ -5,6 +5,8 @@ use Brief\models\Entreprise;
 use Brief\models\Fonction;
 use Brief\models\Regime;
 use Brief\models\Domaine;
+use Brief\models\Quartier;
+require '../models/Quartier.php';
 require '../models/Domaine.php';
 require '../models/Fonction.php';
 require '../models/Regime.php';
@@ -23,6 +25,8 @@ if (isset($_GET['form'])){
     $fonction = new Fonction();
     $regime = new Regime();
     $domaine = new Domaine();
+    $quartier = new Quartier();
+    $_SESSION['quartiers'] = $quartier->all_quartier();
     $_SESSION['domaines'] = $domaine->all_domaines();
     $_SESSION['regimes'] = $regime->all_regimes();
     $_SESSION['fonctions'] = $fonction->all_fonctions();
