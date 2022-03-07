@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-<form class="d-flex">
+<form class="d-flex" method="POST" action="../utilisateurs/entrepriseController">
     <div class="col-6 border-end">
         <h2 class="text-center"> Informations sur l'organisation</h2>
         <!-- Nom de l'entreprise-->
@@ -145,7 +145,8 @@
 
  </div>
  <div class="col-12 my-5">
-      <input type="submit" class="btn btn-success col-12" value="Ajouter l'organisation">
+
+      <input type="submit" class="btn btn-success col-12" value="Ajouter l'organisation" name="add_organisation">
 </div>
 </form>
 </body>

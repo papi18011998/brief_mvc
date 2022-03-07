@@ -2,6 +2,8 @@
 
 namespace Brief\utils;
 
+use PDO;
+
 class Helper
 {
     private static  $pdo;
@@ -12,7 +14,7 @@ class Helper
     public static  function get_connexion(){
         if (self::$pdo==null){
             try {
-                self::$pdo = new \PDO('mysql:host='.self::$hostname.';dbname='.self::$dbname,self::$usernane,self::$password);
+                self::$pdo = new PDO('mysql:host='.self::$hostname.';dbname='.self::$dbname,self::$usernane,self::$password);
             }catch (\PDOException $exception){
                 echo 'Erreur de connexion à la base de donnee'.$exception->getMessage();
             }

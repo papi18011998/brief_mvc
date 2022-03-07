@@ -309,29 +309,30 @@ class Entreprise
         $request->execute([$id_entreprise]);
         return$request->fetchAll();
     }
-    public function add_entreprise(Entreprise $entreprise){
+    public function add_entreprise(Entreprise $enterprise){
         $helper = Helper::get_connexion();
-        $statement = 'INSERT INTO `entreprises` (`nom_entreprise`,`coordonnees`,`ninea`,`rccm`,`date_creation`,`page_web`,`nombre_employe`,`organigramme`,`cotisations_sociales`,`contrat`,`id_repondant`,`id_domaine`,`id_dispositif`,`id_regime`,`id_quartier`,`id_utilisateur`) 
-                      VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ';
+        $statement = 'INSERT INTO `entreprises` (`id_entreprise`,`nom_entreprise`, `coordonnees`, `ninea`, `rccm`, `date_creation`, `page_web`, `nombre_employe`, `organigramme`, `cotisations_sociales`, `contrat`, `id_repondant`, `id_domaine`, `id_dispositif`, `id_regime`, `id_quartier`, `id_utilisateur`) 
+                      VALUES (NULL,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ';
         $request = $helper->prepare($statement);
         $request->execute([
-            $entreprise->getNomEntreprise(),
-            $entreprise->getCoordonnees(),
-            $entreprise->getNinea(),
-            $entreprise->getRccm(),
-            $entreprise->getDateCreattion(),
-            $entreprise->getPageWeb(),
-            $entreprise->getNombreEmploye(),
-            $entreprise->getOrganigramme(),
-            $entreprise->getCotisationsSociales(),
-            $entreprise->getContrat(),
-            $entreprise->getIdRepondant(),
-            $entreprise->getIdDispositif(),
-            $entreprise->getIdRegime(),
-            $entreprise->getIdQuartier(),
-            $entreprise->getIdUtilisateur()
+            $enterprise->getNomEntreprise(),
+            $enterprise->getCoordonnees(),
+            $enterprise->getNinea(),
+            $enterprise->getRccm(),
+            $enterprise->getDateCreattion(),
+            $enterprise->getPageWeb(),
+            $enterprise->getNombreEmploye(),
+            $enterprise->getOrganigramme(),
+            $enterprise->getCotisationsSociales(),
+            $enterprise->getContrat(),
+            $enterprise->getIdRepondant(),
+            $enterprise->getIdDomaine(),
+            $enterprise->getIdDispositif(),
+            $enterprise->getIdRegime(),
+            $enterprise->getIdQuartier(),
+            $enterprise->getIdUtilisateur()
         ]);
-        return $entreprise;
+        return $enterprise;
     }
     
 }
