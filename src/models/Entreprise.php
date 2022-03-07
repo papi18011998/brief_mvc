@@ -297,7 +297,8 @@ class Entreprise
 
     public function all_entreprises(){
         $helper = Helper::get_connexion();
-        $statement = 'SELECT * FROM `entreprises`';
+        $statement = 'SELECT * FROM `entreprises` , `repondants` 
+                      WHERE entreprises.id_repondant = repondants.id_repondant';
         $request = $helper->query($statement);
         return $request->fetchAll();
     }
@@ -332,5 +333,5 @@ class Entreprise
         ]);
         return $entreprise;
     }
-
+    
 }

@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(!isset($_SESSION['user_connected'])){
+    header('location:../../connexion');
+}
 ?>
 <!Doctype html>
 <html lang="fr">
@@ -10,6 +13,38 @@ session_start();
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-    
+<div><a href="" class="btn btn-success">Ajouter une nouvelle organisation</a></div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Nom de l'entreprise</th>
+      <th scope="col">Ninea</th>
+      <th scope="col">Registre de commerce</th>
+      <th scope="col">Date de creation</th>
+      <th scope="col">Site Web</th>
+      <th scope="col">Organigramme</th>
+      <th scope="col">Prenom et nom Repondant</th>
+      <th scope="col">Modifier</th>
+      <th scope="col">Supprimer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+      foreach($_SESSION['all'] as $entreprise){?>
+        <tr>
+            <td><?= $entreprise['nom_entreprise']; ?></td>
+            <td><?= $entreprise['ninea']; ?></td>
+            <td><?= $entreprise['rccm']; ?></td>
+            <td><?= $entreprise['date_creation']; ?></td>
+            <td><?= $entreprise['page_web']; ?></td>
+            <td><?= $entreprise['organigramme']; ?></td>
+            <td><?= $entreprise['prenom_repondant'].' '.$entreprise['nom_repondant']; ?></td>
+            <td><a class="btn btn-success">Modifier</a></td>
+            <td><a class="btn btn-danger">Supprimer</a></td>
+        </tr>
+      <?php } ?>
+
+  </tbody>
+</table>
 </body>
 </html>
