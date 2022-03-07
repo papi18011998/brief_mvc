@@ -40,7 +40,7 @@ class Regime
     {
         $this->libelle_regime = $libelle_regime;
     }
-    public function all_regime(){
+    public function all_regimes(){
         $helper = Helper::get_connexion();
         $statement ='SELECT * FROM `regimes`';
         $request = $helper->query($statement);

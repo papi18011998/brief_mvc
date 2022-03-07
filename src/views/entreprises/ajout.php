@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(!isset($_SESSION['user_connected'])){
+    header('location:../connexion');
+}
 ?>
 <!Doctype html>
 <html lang="fr">
@@ -25,8 +28,11 @@ session_start();
          <div class="col-sm-3 col-md-6 my-1 px-3">
             <label class="sr-only" for="id_regime">Quel est votre regime?</label>
             <select class="form-select" id="id_regime" name="id_regime" aria-label="Default select example">
-                <option value="1">Oui</option>
-                <option value="2">Non</option>
+                <?php
+                foreach ($_SESSION['regimes'] as $regime){
+                    ?>
+                    <option value=<?=$regime['id_regime']?>><?=$regime['libelle_regime']?></option>
+                <?php }?>
             </select>
          </div>
          <div class="col-sm-3 col-md-6 my-1 px-3">

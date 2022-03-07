@@ -3,7 +3,9 @@ session_start();
 use Brief\models\Repondant;
 use Brief\models\Entreprise;
 use Brief\models\Fonction;
+use Brief\models\Regime;
 require '../models/Fonction.php';
+require '../models/Regime.php';
 require '../models/Entreprise.php';
 
 /*00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -17,6 +19,8 @@ if (isset($_POST['add_organisation'])) {
 }
 if (isset($_GET['form'])){
     $fonction = new Fonction();
+    $regime = new Regime();
+    $_SESSION['regimes'] = $regime->all_regimes();
     $_SESSION['fonctions'] = $fonction->all_fonctions();
     header('location:../entreprises/ajout');
 }
