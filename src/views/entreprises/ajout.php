@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!Doctype html>
 <html lang="fr">
 <head>
@@ -138,8 +141,11 @@
          <div class="col-sm-3 col-md-12 my-1 px-3">
             <label class="sr-only" for="id_fonction">Fonction du Repondant</label>
             <select class="form-select" id="id_fonction" name="id_fonction" aria-label="Default select example">
-            <option value="1">Oui</option>
-            <option value="2">Non</option>
+                <?php
+                    foreach ($_SESSION['fonctions'] as $fonction){
+                ?>
+                    <option value=<?=$fonction['id_fonction']?>><?=$fonction['libelle_fonction']?></option>
+                <?php }?>
          </div>
     </div>
 

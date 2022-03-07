@@ -3,6 +3,7 @@
 namespace Brief\utils;
 
 use PDO;
+use PDOException;
 
 class Helper
 {
@@ -15,7 +16,7 @@ class Helper
         if (self::$pdo==null){
             try {
                 self::$pdo = new PDO('mysql:host='.self::$hostname.';dbname='.self::$dbname,self::$usernane,self::$password);
-            }catch (\PDOException $exception){
+            }catch (PDOException $exception){
                 echo 'Erreur de connexion à la base de donnee'.$exception->getMessage();
             }
         }

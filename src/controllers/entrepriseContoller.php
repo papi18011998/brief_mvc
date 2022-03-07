@@ -2,6 +2,8 @@
 session_start();
 use Brief\models\Repondant;
 use Brief\models\Entreprise;
+use Brief\models\Fonction;
+require '../models/Fonction.php';
 require '../models/Entreprise.php';
 
 /*00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -14,7 +16,9 @@ if (isset($_POST['add_organisation'])) {
     add_organisations();
 }
 if (isset($_GET['form'])){
-
+    $fonction = new Fonction();
+    $_SESSION['fonctions'] = $fonction->all_fonctions();
+    header('location:../entreprises/ajout');
 }
 /*00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
                                                                          FONCTIONS DE TRAITEMENTS DES ENTREPRISES
