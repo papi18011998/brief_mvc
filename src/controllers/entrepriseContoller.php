@@ -27,6 +27,12 @@ if (isset($_POST['add_organisation'])) {
 if (isset($_GET['form'])){
     get_dropdowns_data();
 }
+if (isset($_GET['update'])){
+   load_old_data();
+}
+if (isset($_POST['update_organisation'])){
+    echo "updatisation";
+}
 /*00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
                                                                          FONCTIONS DE TRAITEMENTS DES ENTREPRISES
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000*/
@@ -48,7 +54,7 @@ function add_organisations(){
         $repondant = new Repondant();
         $repondant->setPrenomRepondant($_POST['prenom_repondant']);
         $repondant->setNomRepondant($_POST['nom_repondant']);
-        $repondant->setTelephoneRepondant($_POST['telephone_repodnant']);
+        $repondant->setTelephoneRepondant($_POST['telephone_repondant']);
         $repondant->setCourriel($_POST['courriel']);
         $repondant->setIdFonction($_POST['id_fonction']);
         $repondant->add_repondant($repondant);
@@ -71,7 +77,8 @@ function add_organisations(){
         $entreprise->setIdQuartier($_POST['id_quartier']);
         $entreprise->setIdUtilisateur($_SESSION['user_connected']['id']);
         $entreprise->add_entreprise($entreprise);
-
+        $_SESSION['all'] = $entreprise->all_entreprises();
+        header('location:liste');
 }
 
 /**
@@ -90,4 +97,11 @@ function get_dropdowns_data(){
     $_SESSION['regimes'] = $regime->all_regimes();
     $_SESSION['fonctions'] = $fonction->all_fonctions();
     header('location:../entreprises/ajout');
+}
+function load_old_data(){
+    $entreprise = new Entreprise();
+    $repondant  = new Repondant();
+    $_SESSION['update_data']=$entreprise->get_entreprise($_GET['update']);
+    $_SESSION['update_data_repodant'] = $repondant->find($_SESSION['update_data']['id_repondant']);
+    header('location:../update_form');
 }

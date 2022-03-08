@@ -304,10 +304,11 @@ class Entreprise
     }
     public function get_entreprise($id_entreprise){
         $helper = Helper::get_connexion();
-        $statement = 'SELECT * FROM `entreprises` WHERE `id_entreprise`=?';
+        $statement = 'SELECT * FROM `entreprises` , `repondants` 
+                      WHERE entreprises.id_repondant = repondants.id_repondant AND `id_entreprise`=?';
         $request = $helper->prepare($statement);
         $request->execute([$id_entreprise]);
-        return$request->fetchAll();
+        return $request->fetch();
     }
     public function add_entreprise(Entreprise $enterprise){
         $helper = Helper::get_connexion();

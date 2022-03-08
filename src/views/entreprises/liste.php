@@ -39,7 +39,7 @@ if(!isset($_SESSION['user_connected'])){
             <td><?= $entreprise['page_web']; ?></td>
             <td><?= $entreprise['organigramme']; ?></td>
             <td><?= $entreprise['prenom_repondant'].' '.$entreprise['nom_repondant']; ?></td>
-            <td><a class="btn btn-success">Modifier</a></td>
+            <td><a class="btn btn-success" href=<?='update/'.$entreprise['id_entreprise']?> >Modifier</a></td>
             <td><a class="btn btn-danger">Supprimer</a></td>
         </tr>
       <?php } ?>
