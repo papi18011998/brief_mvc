@@ -13,7 +13,7 @@ if(!isset($_SESSION['user_connected'])){
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-<form class="d-flex" method="POST" action="../utilisateurs/entrepriseController">
+<form class="d-flex" method="POST" action="add">
     <div class="col-6 border-end">
         <h2 class="text-center"> Informations sur l'organisation</h2>
         <!-- Nom de l'entreprise-->
@@ -51,8 +51,11 @@ if(!isset($_SESSION['user_connected'])){
          <div class="col-sm-3 col-md-6 my-1 px-3">
             <label class="sr-only" for="id_dispositif">Quel est votre dispositif de formation?</label>
             <select class="form-select" id="id_dispositif" name="id_dispositif" aria-label="Default select example">
-                <option value="1">Oui</option>
-                <option value="2">Non</option>
+                <?php
+                foreach ($_SESSION['dispositifs'] as $dispositif){
+                    ?>
+                    <option value=<?=$dispositif['id_dispositif']?> > <?=$dispositif['libelle_dispositif']?> </option>
+                <?php }?>
             </select>
          </div>
          <div class="col-sm-3 col-md-6 my-1 px-3">
@@ -164,7 +167,7 @@ if(!isset($_SESSION['user_connected'])){
  </div>
  <div class="col-12 my-5">
 
-      <input type="submit" class="btn btn-success col-12" value="Ajouter l'organisation" name="add_organisation">
+      <input type="submit" class="btn btn-success col-12 my-5" value="Ajouter l'organisation" name="add_organisation">
 </div>
 </form>
 </body>

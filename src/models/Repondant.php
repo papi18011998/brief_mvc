@@ -134,4 +134,10 @@ class Repondant
         ]);
         return $repondant;
     }
+    public function get_last_repondant(){
+        $helper = Helper::get_connexion();
+        $statement ='SELECT * FROM `repondants` ORDER BY id_repondant DESC LIMIT 1 ';
+        $request = $helper->query($statement);
+        return $request->fetch();
+    }
 }
