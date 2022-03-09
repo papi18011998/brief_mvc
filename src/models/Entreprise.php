@@ -335,5 +335,54 @@ class Entreprise
         ]);
         return $enterprise;
     }
-    
+    public function update_entreprise(Entreprise $entreprise){
+        $helper = Helper::get_connexion();
+        $statement = 'UPDATE `entreprises` SET 
+                         `nom_entreprise` = ?,
+                         `coordonnees`=?,
+                         `ninea` = ?,
+                         `rccm` =?,
+                         `date_creation` = ?,
+                         `page_web` = ?,
+                         `nombre_employe` = ?,
+                         `organigramme` = ?,
+                         `cotisations_sociales` = ?,
+                         `contrat` = ?,
+                         `id_domaine` = ?,
+                         `id_dispositif` = ?,
+                         `id_regime` = ?,
+                         `id_quartier` = ?
+                          WHERE id_entreprise= ? ';
+         $request =$helper->prepare($statement);
+            $request->execute([
+            $entreprise->getNomEntreprise(),
+            $entreprise->getCoordonnees(),
+            $entreprise->getNinea(),
+            $entreprise->getRccm(),
+            $entreprise->getDateCreattion(),
+            $entreprise->getPageWeb(),
+            $entreprise->getNombreEmploye(),
+            $entreprise->getOrganigramme(),
+            $entreprise->getCotisationsSociales(),
+            $entreprise->getContrat(),
+            $entreprise->getIdDomaine(),
+            $entreprise->getIdDispositif(),
+            $entreprise->getIdRegime(),
+            $entreprise->getIdQuartier(),
+            $entreprise->getIdEntreprise()
+        ]);
+         return $request->rowCount();
+    }
+    //                         `ninea` = ?,
+//                         `rccm` = ?,
+//                         `date_creation` = ?,
+//                         `page_web` = ?,
+//                         `nombre_employe` = ?,
+//                         `organigramme` = ?,
+//                         `cotisations_sociales` = ?,
+//                         `contrat` = ?,
+//                         `id_domaine` = ?,
+//                         `id_dispositif` = ?,
+//                         `id_regime` = ?,
+//                         `id_quartier` = ?
 }

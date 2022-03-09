@@ -1,5 +1,6 @@
 <?php
 session_start();
+//require '../../vendor/autoload.php';
 use Brief\models\Repondant;
 use Brief\models\Entreprise;
 use Brief\models\Fonction;
@@ -26,13 +27,45 @@ if (isset($_POST['add_organisation'])) {
 }
 if (isset($_GET['form'])){
     get_dropdowns_data();
+    header('location:../entreprises/ajout');
 }
 if (isset($_GET['update'])){
-   load_old_data();
+    $_SESSION['id'] =$_GET['update'];
+    get_dropdowns_data();
+    load_old_data();
 }
-if (isset($_POST['update_organisation'])){
-    echo "updatisation";
-}
+//if (isset($_POST['update_organisation'])){
+//    Modification de l'entreprise
+    $entreprise = new Entreprise();
+    $entreprise->setIdEntreprise(6);
+    $entreprise->setNomEntreprise('nom_entrepris');
+    $entreprise->setCoordonnees('coordonnees');
+    $entreprise->setNinea('ninea_updated');
+    $entreprise->setRccm('rccm_updated');
+    $entreprise->setDateCreattion('1998-01-18');
+    $entreprise->setPageWeb('page_web');
+    $entreprise->setNombreEmploye(410);
+    $entreprise->setOrganigramme(1);
+    $entreprise->setCotisationsSociales(1);
+    $entreprise->setContrat('prestations');
+    $entreprise->setIdDomaine(4);
+    $entreprise->setIdDispositif(2);
+    $entreprise->setIdRegime(1);
+    $entreprise->setIdQuartier(2);
+    var_dump($entreprise->update_entreprise($entreprise));
+
+//    Modifiaction du repondant
+//    $repondant = new Repondant();
+//    $repondant->setPrenomRepondant($_POST['prenom_repondant']);
+//    $repondant->setNomRepondant($_POST['nom_repondant']);
+//    $repondant->setTelephoneRepondant($_POST['telephone_repondant']);
+//    $repondant->setCourriel($_POST['courriel']);
+//    $repondant->setIdFonction($_POST['id_fonction']);
+//    $repondant->setIdRepondant($entreprise->get_entreprise($entreprise->getIdEntreprise())['id_repondant']);
+//    $repondant->update_repondant($repondant);
+//    $_SESSION['all']=$entreprise->all_entreprises();
+//    header('location:../entreprises/liste');
+//}
 /*00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
                                                                          FONCTIONS DE TRAITEMENTS DES ENTREPRISES
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000*/
@@ -50,7 +83,7 @@ function get_all(){
  * @return void
  */
 function add_organisations(){
-//        Creation du repodant
+//        Creation du repondant
         $repondant = new Repondant();
         $repondant->setPrenomRepondant($_POST['prenom_repondant']);
         $repondant->setNomRepondant($_POST['nom_repondant']);
@@ -96,7 +129,6 @@ function get_dropdowns_data(){
     $_SESSION['domaines'] = $domaine->all_domaines();
     $_SESSION['regimes'] = $regime->all_regimes();
     $_SESSION['fonctions'] = $fonction->all_fonctions();
-    header('location:../entreprises/ajout');
 }
 function load_old_data(){
     $entreprise = new Entreprise();

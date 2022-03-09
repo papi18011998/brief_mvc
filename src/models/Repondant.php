@@ -140,4 +140,24 @@ class Repondant
         $request = $helper->query($statement);
         return $request->fetch();
     }
+    public function update_repondant(Repondant  $repondant){
+        $helper = Helper::geconnexiont_connexion();
+        $statement = 'UPDATE `repondants` SET 
+                        `prenom_repondant` = ?,
+                        `nom_repondant` = ?,
+                        `telephone_repondant` = ?, 
+                        `courriel` = ?,
+                        `id_fonction` =?
+                        WHERE `id_repondant` = ?';
+        $request = $helper->prepare($statement);
+        $request->execute([
+           $repondant->getPrenomRepondant(),
+           $repondant->getNomRepondant(),
+           $repondant->getTelephoneRepondant(),
+           $repondant->getcourriel(),
+           $repondant->getIdFonction(),
+           $repondant->getIdRepondant()
+        ]);
+        return $repondant;
+    }
 }
