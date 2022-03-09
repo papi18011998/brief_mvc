@@ -373,16 +373,4 @@ class Entreprise
         ]);
          return $request->rowCount();
     }
-    //                         `ninea` = ?,
-//                         `rccm` = ?,
-//                         `date_creation` = ?,
-//                         `page_web` = ?,
-//                         `nombre_employe` = ?,
-//                         `organigramme` = ?,
-//                         `cotisations_sociales` = ?,
-//                         `contrat` = ?,
-//                         `id_domaine` = ?,
-//                         `id_dispositif` = ?,
-//                         `id_regime` = ?,
-//                         `id_quartier` = ?
 }

@@ -141,7 +141,7 @@ class Repondant
         return $request->fetch();
     }
     public function update_repondant(Repondant  $repondant){
-        $helper = Helper::geconnexiont_connexion();
+        $helper = Helper::get_connexion();
         $statement = 'UPDATE `repondants` SET 
                         `prenom_repondant` = ?,
                         `nom_repondant` = ?,
@@ -158,6 +158,6 @@ class Repondant
            $repondant->getIdFonction(),
            $repondant->getIdRepondant()
         ]);
-        return $repondant;
+        return $request->rowCount();
     }
 }

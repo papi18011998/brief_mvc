@@ -34,38 +34,38 @@ if (isset($_GET['update'])){
     get_dropdowns_data();
     load_old_data();
 }
-//if (isset($_POST['update_organisation'])){
+if (isset($_POST['update_organisation'])){
 //    Modification de l'entreprise
     $entreprise = new Entreprise();
-    $entreprise->setIdEntreprise(6);
-    $entreprise->setNomEntreprise('nom_entrepris');
-    $entreprise->setCoordonnees('coordonnees');
-    $entreprise->setNinea('ninea_updated');
-    $entreprise->setRccm('rccm_updated');
-    $entreprise->setDateCreattion('1998-01-18');
-    $entreprise->setPageWeb('page_web');
-    $entreprise->setNombreEmploye(410);
-    $entreprise->setOrganigramme(1);
-    $entreprise->setCotisationsSociales(1);
-    $entreprise->setContrat('prestations');
-    $entreprise->setIdDomaine(4);
-    $entreprise->setIdDispositif(2);
-    $entreprise->setIdRegime(1);
-    $entreprise->setIdQuartier(2);
-    var_dump($entreprise->update_entreprise($entreprise));
+    $entreprise->setIdEntreprise(intval($_SESSION['id']));
+    $entreprise->setNomEntreprise($_POST['nom_entreprise']);
+    $entreprise->setCoordonnees($_POST['coordonnees']);
+    $entreprise->setNinea($_POST['ninea']);
+    $entreprise->setRccm($_POST['rccm']);
+    $entreprise->setDateCreattion($_POST['date_creation']);
+    $entreprise->setPageWeb($_POST['page_web']);
+    $entreprise->setNombreEmploye($_POST['nombre_emloye']);
+    $entreprise->setOrganigramme($_POST['organigramme']);
+    $entreprise->setCotisationsSociales($_POST['cotisations_sociales']);
+    $entreprise->setContrat($_POST['contrat']);
+    $entreprise->setIdDomaine($_POST['id_domaine']);
+    $entreprise->setIdDispositif($_POST['id_dispositif']);
+    $entreprise->setIdRegime($_POST['id_regime']);
+    $entreprise->setIdQuartier($_POST['id_quartier']);
+    $entreprise->update_entreprise($entreprise);
 
 //    Modifiaction du repondant
-//    $repondant = new Repondant();
-//    $repondant->setPrenomRepondant($_POST['prenom_repondant']);
-//    $repondant->setNomRepondant($_POST['nom_repondant']);
-//    $repondant->setTelephoneRepondant($_POST['telephone_repondant']);
-//    $repondant->setCourriel($_POST['courriel']);
-//    $repondant->setIdFonction($_POST['id_fonction']);
-//    $repondant->setIdRepondant($entreprise->get_entreprise($entreprise->getIdEntreprise())['id_repondant']);
-//    $repondant->update_repondant($repondant);
-//    $_SESSION['all']=$entreprise->all_entreprises();
-//    header('location:../entreprises/liste');
-//}
+    $repondant = new Repondant();
+    $repondant->setPrenomRepondant($_POST['prenom_repondant']);
+    $repondant->setNomRepondant($_POST['nom_repondant']);
+    $repondant->setTelephoneRepondant($_POST['telephone_repondant']);
+    $repondant->setCourriel($_POST['courriel']);
+    $repondant->setIdFonction($_POST['id_fonction']);
+    $repondant->setIdRepondant($entreprise->get_entreprise($entreprise->getIdEntreprise())['id_repondant']);
+    var_dump($repondant->update_repondant($repondant));
+    $_SESSION['all']=$entreprise->all_entreprises();
+    header('location:../entreprises/liste');
+}
 /*00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
                                                                          FONCTIONS DE TRAITEMENTS DES ENTREPRISES
 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000*/
