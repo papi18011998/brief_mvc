@@ -34,37 +34,12 @@ if (isset($_GET['update'])){
     get_dropdowns_data();
     load_old_data();
 }
+if (isset($_GET['delete'])){
+    $id_entreprise = $_GET['delete'];
+    delete($id_entreprise);
+}
 if (isset($_POST['update_organisation'])){
-//    Modification de l'entreprise
-    $entreprise = new Entreprise();
-    $entreprise->setIdEntreprise(intval($_SESSION['id']));
-    $entreprise->setNomEntreprise($_POST['nom_entreprise']);
-    $entreprise->setCoordonnees($_POST['coordonnees']);
-    $entreprise->setNinea($_POST['ninea']);
-    $entreprise->setRccm($_POST['rccm']);
-    $entreprise->setDateCreattion($_POST['date_creation']);
-    $entreprise->setPageWeb($_POST['page_web']);
-    $entreprise->setNombreEmploye($_POST['nombre_emloye']);
-    $entreprise->setOrganigramme($_POST['organigramme']);
-    $entreprise->setCotisationsSociales($_POST['cotisations_sociales']);
-    $entreprise->setContrat($_POST['contrat']);
-    $entreprise->setIdDomaine($_POST['id_domaine']);
-    $entreprise->setIdDispositif($_POST['id_dispositif']);
-    $entreprise->setIdRegime($_POST['id_regime']);
-    $entreprise->setIdQuartier($_POST['id_quartier']);
-    $entreprise->update_entreprise($entreprise);
-
-//    Modifiaction du repondant
-    $repondant = new Repondant();
-    $repondant->setPrenomRepondant($_POST['prenom_repondant']);
-    $repondant->setNomRepondant($_POST['nom_repondant']);
-    $repondant->setTelephoneRepondant($_POST['telephone_repondant']);
-    $repondant->setCourriel($_POST['courriel']);
-    $repondant->setIdFonction($_POST['id_fonction']);
-    $repondant->setIdRepondant($entreprise->get_entreprise($entreprise->getIdEntreprise())['id_repondant']);
-    var_dump($repondant->update_repondant($repondant));
-    $_SESSION['all']=$entreprise->all_entreprises();
-    header('location:../entreprises/liste');
+    update();
 }
 /*00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
                                                                          FONCTIONS DE TRAITEMENTS DES ENTREPRISES
@@ -130,10 +105,67 @@ function get_dropdowns_data(){
     $_SESSION['regimes'] = $regime->all_regimes();
     $_SESSION['fonctions'] = $fonction->all_fonctions();
 }
+
+/**
+ * Cette fonction recharge les donnees pour la modification
+ * @return void
+ */
 function load_old_data(){
     $entreprise = new Entreprise();
     $repondant  = new Repondant();
     $_SESSION['update_data']=$entreprise->get_entreprise($_GET['update']);
     $_SESSION['update_data_repodant'] = $repondant->find($_SESSION['update_data']['id_repondant']);
     header('location:../update_form');
+}
+
+/**
+ * Cette fonction pemet de faire la modification d'une organisation
+ * @return void
+ */
+function update(){
+    //    Modification de l'entreprise
+    $entreprise = new Entreprise();
+    $entreprise->setIdEntreprise(intval($_SESSION['id']));
+    $entreprise->setNomEntreprise($_POST['nom_entreprise']);
+    $entreprise->setCoordonnees($_POST['coordonnees']);
+    $entreprise->setNinea($_POST['ninea']);
+    $entreprise->setRccm($_POST['rccm']);
+    $entreprise->setDateCreattion($_POST['date_creation']);
+    $entreprise->setPageWeb($_POST['page_web']);
+    $entreprise->setNombreEmploye($_POST['nombre_emloye']);
+    $entreprise->setOrganigramme($_POST['organigramme']);
+    $entreprise->setCotisationsSociales($_POST['cotisations_sociales']);
+    $entreprise->setContrat($_POST['contrat']);
+    $entreprise->setIdDomaine($_POST['id_domaine']);
+    $entreprise->setIdDispositif($_POST['id_dispositif']);
+    $entreprise->setIdRegime($_POST['id_regime']);
+    $entreprise->setIdQuartier($_POST['id_quartier']);
+    $entreprise->update_entreprise($entreprise);
+//    Modifiaction du repondant
+    $repondant = new Repondant();
+    $repondant->setPrenomRepondant($_POST['prenom_repondant']);
+    $repondant->setNomRepondant($_POST['nom_repondant']);
+    $repondant->setTelephoneRepondant($_POST['telephone_repondant']);
+    $repondant->setCourriel($_POST['courriel']);
+    $repondant->setIdFonction($_POST['id_fonction']);
+    $repondant->setIdRepondant($entreprise->get_entreprise($entreprise->getIdEntreprise())['id_repondant']);
+    var_dump($repondant->update_repondant($repondant));
+    $_SESSION['all']=$entreprise->all_entreprises();
+    header('location:../entreprises/liste');
+}
+
+/**
+ * Cette fonction permet de faire la suppression d'une entreprise
+ * @param $id
+ * @return void
+ */
+function delete($id){
+    $entreprise = new  Entreprise();
+    $repondant = new Repondant();
+    $entreprise->setIdEntreprise($id);
+    $id_repondant = $entreprise->get_entreprise($id)['id_repondant'];
+    $entreprise->delete_entreprise($entreprise);
+    $repondant->delete_repondant($id_repondant);
+    $_SESSION['all'] = $entreprise->all_entreprises();
+    header('location:liste');
 }

@@ -160,4 +160,12 @@ class Repondant
         ]);
         return $request->rowCount();
     }
+    public function delete_repondant($id_repondant){
+        $helper = Helper::get_connexion();
+        $statement = 'DELETE FROM `repondants`
+                      WHERE `id_repondant` = ?';
+        $request = $helper->prepare($statement);
+        $request->execute([$id_repondant]);
+        return $request->rowCount();
+    }
 }

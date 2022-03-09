@@ -373,4 +373,13 @@ class Entreprise
         ]);
          return $request->rowCount();
     }
+    public function delete_entreprise(Entreprise $entreprise){
+        $helper = Helper::get_connexion();
+        $statement = 'DELETE FROM `entreprises` 
+                      WHERE  `id_entreprise`=?';
+        $request = $helper->prepare($statement);
+        $request->execute([$entreprise->getIdEntreprise()]);
+        return $request->rowCount();
+    }
+
 }

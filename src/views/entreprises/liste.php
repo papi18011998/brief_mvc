@@ -40,7 +40,7 @@ if(!isset($_SESSION['user_connected'])){
             <td><?= $entreprise['organigramme']; ?></td>
             <td><?= $entreprise['prenom_repondant'].' '.$entreprise['nom_repondant']; ?></td>
             <td><a class="btn btn-success" href=<?='update/'.$entreprise['id_entreprise']?> >Modifier</a></td>
-            <td><a class="btn btn-danger">Supprimer</a></td>
+            <td><a class="btn btn-danger" href="<?='delete/'.$entreprise['id_entreprise']?>">Supprimer</a></td>
         </tr>
       <?php } ?>
 
