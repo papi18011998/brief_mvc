@@ -15,6 +15,7 @@ if(!isset($_SESSION['user_connected'])){
 <body>
 <div class="d-flex justify-content-between border" >
     <a href="../utilisateurs/add_organisation" class="btn btn-success">Ajouter une nouvelle organisation</a>
+    <div>Bienvenue <?=$_SESSION['user_connected']['prenom'].' '.$_SESSION['user_connected']['nom'];?> </div>
     <a href="../utilisateurs/logout" class="btn btn-danger">Déconnexion</a>
 </div>
 <table class="table table-striped">
