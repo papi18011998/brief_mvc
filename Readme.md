@@ -21,6 +21,6 @@ Modèle-vue-contrôleur ou MVC est un motif d'architecture logicielle destiné a
 [Mon Portfolio](https://papi18011998.github.io/my-portfolio/)
 
 
-**_`<a HREF="mailto:ibrahima.simplon@gmail.com">ibrahima.simplon@gmail.com</a>`_**
+<a HREF="mailto:ibrahima.simplon@gmail.com">ibrahima.simplon@gmail.com</a>
 
 Bye Bye 🖐️
