@@ -2,10 +2,13 @@ RewriteEngine On
 #Home pages
 RewriteRule ^accueil$ index.php
 RewriteRule ^connexion$ src/views/connexion.php
+
 #Users Routes
 RewriteRule ^utilisateurs/connexion$ src/controllers/utilisateurController.php?get_connexion
 RewriteRule ^utilisateurs/entrepriseController$ src/controllers/entrepriseContoller.php?liste
 RewriteRule ^utilisateurs/add_organisation$ src/controllers/entrepriseContoller.php?form
+RewriteRule ^utilisateurs/logout$ src/controllers/entrepriseContoller.php?logout
+
 #Entreprises Routes
 RewriteRule ^entreprises/add$ src/controllers/entrepriseContoller.php
 RewriteRule ^entreprises/update$ src/controllers/entrepriseContoller.php
